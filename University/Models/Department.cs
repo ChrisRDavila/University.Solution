@@ -11,5 +11,6 @@ namespace University.Models
     [Required(ErrorMessage = "We suggest creating a descrption for each department!")]
     public string Description { get; set; }
     public List<Course> Courses { get; set; }
+    public List<Student> Students { get; set; }
   }
 }

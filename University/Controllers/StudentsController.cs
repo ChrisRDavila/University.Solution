@@ -18,12 +18,16 @@ namespace University.Controllers
 
     public ActionResult Index()
     {
-      return View(_db.Students.ToList());
+      List<Student> model = _db.Students
+                    .Include(student => student.Department)
+                    .ToList();
+        return View(model);
     }
 
     public ActionResult Details(int id)
     {
       Student thisStudent = _db.Students
+          .Include(student => student.Department)
           .Include(student => student.JoinEntities)
           .ThenInclude(join => join.Course)
           .FirstOrDefault(student => student.StudentId == id);
@@ -32,15 +36,24 @@ namespace University.Controllers
 
     public ActionResult Create()
     {
+      ViewBag.DepartmentId = new SelectList(_db.Departments, "DepartmentId", "DepartmentName");
       return View();
     }
 
     [HttpPost]
     public ActionResult Create(Student student)
     {
+      if (!ModelState.IsValid)
+      {
+        ViewBag.DepartmentId = new SelectList(_db.Departments, "DepartmentId", "DepartmentName");
+        return View(student);
+      }
+      else
+      {
       _db.Students.Add(student);
       _db.SaveChanges();
       return RedirectToAction("Index");
+      }
     }
 
     public ActionResult AddCourse(int id)
@@ -67,6 +80,7 @@ namespace University.Controllers
     public ActionResult Edit(int id)
     {
       Student thisStudent = _db.Students.FirstOrDefault(students => students.StudentId == id);
+      ViewBag.DepartmentId = new SelectList(_db.Departments, "DepartmentId", "DepartmentName");
       return View(thisStudent);
     }
 
