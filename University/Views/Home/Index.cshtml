@@ -19,6 +19,7 @@
     <li>@Html.ActionLink(@crs.CourseName, "Details", "Courses", new { id = @crs.CourseId})</li>
   }
 </ul>
+<hr />
 
 <h4>Students</h4>
 @if (Model["students"].Length == 0)
@@ -31,6 +32,7 @@
     <li>@Html.ActionLink(@student.StudentName, "Details", "Students", new { id = @student.StudentId})</li>
   }
 </ul>
+<hr />
 
 <h4>Departments</h4>
 @if (Model["departments"].Length == 0)
@@ -46,6 +48,4 @@
 
 <hr />
 
-<p>@Html.ActionLink("Manage students", "Index", "Students")</p> 
-<p>@Html.ActionLink("Manage courses", "Index", "Courses")</p>
-<p>@Html.ActionLink("Manage departments", "Index", "Departments")</p>
+<p>@Html.ActionLink("Manage students", "Index", "Students")</p> <p>@Html.ActionLink("Manage courses", "Index", "Courses")</p> <p>@Html.ActionLink("Manage departments", "Index", "Departments")</p>

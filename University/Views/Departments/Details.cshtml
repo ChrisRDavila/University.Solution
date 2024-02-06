@@ -8,7 +8,7 @@
 <h2>Department Details</h2>
 <hr />
 <h3>@Html.DisplayNameFor(model => model.DepartmentName): @Html.DisplayFor(model => model.DepartmentName)<h3>
-  <h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)<h3></h3>
+<h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)<h3></h3>
 
 @if (@Model.Courses.Count == 0)
 {
@@ -16,7 +16,7 @@
 } 
 else
 {
-  <h3>Course:</h3>
+  <h3>Courses:</h3>
   <ul>
     @foreach (Course course in Model.Courses)
     {
@@ -24,6 +24,23 @@ else
     }
   </ul>
 }
+
+@if (@Model.Students.Count == 0)
+{
+  <h3>No students have been added to this department yet!</h3>
+} 
+else
+{
+  <h3>Students:</h3>
+  <ul>
+    @foreach (Student student in Model.Students)
+    {
+      <li>@Html.ActionLink($"{student.StudentName}", "Details", "Students", new { id = student.StudentId })</li>
+      
+    }
+  </ul>
+}
+
 
 <p>@Html.ActionLink("Edit Department", "Edit", new { id = Model.DepartmentId })</p>
 <p>@Html.ActionLink("Delete Department", "Delete", new { id = Model.DepartmentId })</p>

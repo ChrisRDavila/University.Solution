@@ -4,10 +4,13 @@
 
 @using University.Models
 @model University.Models.Student
+@using System.Collections.Generic
 
 <h2>Student Details</h2>
 <hr />
 <h3>@Html.DisplayNameFor(model => model.StudentName): @Html.DisplayFor(model => model.StudentName)</h3>
+<h3>@Html.DisplayNameFor(model => model.Enrollment): @Html.DisplayFor(model => model.Enrollment)</h3>
+<h3>@Html.DisplayNameFor(model => model.Department): @Html.DisplayFor(model => model.Department.DepartmentName)</h3>
 
 @if(@Model.JoinEntities.Count == 0)
 {

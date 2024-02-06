@@ -17,6 +17,9 @@
     @Html.LabelFor(model => model.Enrollment)
     @Html.EditorFor(model => model.Enrollment)
 
+    @Html.LabelFor(model => model.Department, "Major")
+    @Html.DropDownList("DepartmentId")
+
     <input type="submit" value="Add new student" class="btn btn-primary" />
 }
-<p>@Html.ActionLink("Show all tags", "Index")</p>
+<p>@Html.ActionLink("Show all students", "Index")</p>
