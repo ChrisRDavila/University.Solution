@@ -19,9 +19,11 @@ namespace University.Controllers
     {
       Course[] crs = _db.Courses.ToArray();
       Student[] stud = _db.Students.ToArray();
+      Department[] dept = _db.Departments.ToArray();
       Dictionary<string,object[]> model = new Dictionary<string, object[]>();
-      model.Add("students", crs);
+      model.Add("courses", crs);
       model.Add("students", stud);
+      model.Add("departments", dept);
       return View(model);
     }
   }

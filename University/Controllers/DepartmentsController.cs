@@ -24,7 +24,7 @@ namespace University.Controllers
     public ActionResult Details(int id)
     {
       Department thisDepartment = _db.Departments
-          .Include(department => department.Course)
+          .Include(department => department.Courses)
           .FirstOrDefault(department => department.DepartmentId == id);
       return View(thisDepartment);
     }

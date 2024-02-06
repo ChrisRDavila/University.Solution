@@ -32,6 +32,18 @@
   }
 </ul>
 
+<h4>Departments</h4>
+@if (Model["departments"].Length == 0)
+{
+  <p>No departments have been added yet!</p>
+} 
+<ul>
+  @foreach (Department department in Model["departments"])
+  {
+    <li>@Html.ActionLink(@department.DepartmentName, "Details", "Departments", new { id = @department.DepartmentId})</li>
+  }
+</ul>
+
 <hr />
 
 <p>@Html.ActionLink("Manage students", "Index", "Students")</p> 
