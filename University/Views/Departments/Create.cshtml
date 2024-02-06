@@ -5,6 +5,10 @@
 @model University.Models.Department
 
 <h4>Add a new department</h4>
+
+<p>@Html.ValidationMessageFor(model => model.DepartmentName, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+
 @using (Html.BeginForm())
 {
   @Html.LabelFor(model => model.DepartmentName)
