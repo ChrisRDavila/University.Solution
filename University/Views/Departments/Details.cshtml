@@ -1,0 +1,30 @@
+@{
+  Layout = "_Layout";
+}
+
+@model University.Models.Department
+@using University.Models
+
+<h2>Department Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.DepartmentName): @Html.DisplayFor(model => model.DepartmentName)<h3>
+  <h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)<h3></h3>
+
+@if (@Model.Courses.Count == 0)
+{
+  <h3>No courses have been added to this department yet!</h3>
+} 
+else
+{
+  <h3>Course:</h3>
+  <ul>
+    @foreach (Course course in Model.Courses)
+    {
+      <li>@Html.ActionLink($"{course.CourseName}", "Details", "Courses", new { id = course.CourseId })</li>
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Edit Department", "Edit", new { id = Model.DepartmentId })</p>
+<p>@Html.ActionLink("Delete Department", "Delete", new { id = Model.DepartmentId })</p>
+<p>@Html.ActionLink("Back to list", "Index")</p>
