@@ -1,0 +1,28 @@
+@* @{
+  Layout = "_Layout";
+}
+
+@model University.Models.Student
+@using University.Models;
+
+<h2>Update Completed Status</h2>
+
+<h4>Change status of course for this student to completed: @Html.DisplayFor(model => model.StudentName)</h4>
+
+@using (Html.BeginForm())
+{
+  @using (CourseStudent join)
+  @using (Course course)
+  @Html.HiddenFor(join.CourseStudentId)
+
+  @Html.Display(course.CourseName)
+
+  @Html.Display(model => model.StudentName)
+
+  @Html.LabelFor(join => join.Completed)
+  @Html.CheckBoxFor(join => join.Completed)
+
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p> *@

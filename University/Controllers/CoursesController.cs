@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using University.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Components.Forms;
 
 namespace University.Controllers
 {
@@ -59,11 +60,13 @@ namespace University.Controllers
 
     public ActionResult AddStudent(int id)
     {
-      Course thisCourse = _db.Courses.FirstOrDefault(courses => courses.CourseId == id);
-      ViewBag.StudentId = new SelectList(_db.Students, "StudentId", "StudentName");
+      Course thisCourse = _db.Courses
+            .FirstOrDefault(courses => courses.CourseId == id);
+            ViewBag.StudentId = new SelectList(_db.Students, "StudentId", "StudentName");
       return View(thisCourse);
     }
 
+    [HttpPost]
     public ActionResult AddStudent(Course course, int studentId)
     {
       #nullable enable

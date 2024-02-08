@@ -7,5 +7,6 @@ namespace University.Models
         public Course Course { get; set; }
         public int StudentId { get; set; }
         public Student Student { get; set; }
+        public bool Completed { get; set; }
     }
 }
